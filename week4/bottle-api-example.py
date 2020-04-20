@@ -28,5 +28,27 @@ def interest():
     }
 
 
+@route('/js')
+def js():
+    """Example showing API usage from JavaScript."""
+
+    return """<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    var params = {'p': 100, 'r': 0.1, 't': 40, 'n': 12};
+    $.getJSON('/', params, function(data) {
+        $(document.body).append(JSON.stringify(data));
+        console.log(data);
+    });
+})
+</script>
+</head>
+<body>
+</body>
+</html>"""
+
+
 if __name__ == '__main__':
     run(host='0.0.0.0', port=80, server='paste')
